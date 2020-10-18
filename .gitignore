@@ -8,3 +8,16 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+/.pgadmin/
+/.postgres/
+/.idea/
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

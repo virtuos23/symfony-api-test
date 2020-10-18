@@ -1,0 +1,74 @@
+version:  '3.5'
+
+networks:
+  saf_api:
+    name: symfony_api_foo
+    driver: bridge
+
+services:
+  psql.test:
+    container_name: saf_pgsql
+    build:
+      context: docker/postgres
+      dockerfile: Dockerfile
+      args:
+        POSTGRES_VERSION: 12.2
+    image: foo_postgres:12.2
+    restart: on-failure
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.postgres:/var/lib/postgresql/data
+      - ./docker/postgres/db-init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - saf_api
+
+  php:
+    container_name: saf_php_fpm
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    image: foo_php:7.4.8-fpm
+    restart: always
+    volumes:
+      - ./:/www/api
+      - ./docker/php/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    ports:
+      - "9050:9000"
+    depends_on:
+      - psql.test
+    networks:
+      - saf_api
+
+  pgadmin:
+    container_name: saf_pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+    volumes:
+      - ./.pgadmin:/var/lib/pgadmin
+    depends_on:
+      - psql.test
+    networks:
+      - saf_api
+
+  web:
+    container_name: saf_nginx
+    image: library/nginx:1.19.1
+    restart: on-failure
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/www/api
+      - ./docker/nginx.d/conf/api.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - psql.test
+    networks:
+      - saf_api
