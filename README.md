@@ -15,6 +15,10 @@ Jeder Vermittler aus der Tabelle std.vermittler darf n Kunden haben. Ausgegeben 
 Jeder Kunde kann n Adressen haben die wiederum eine 1:1 Beziehung zu std.kunde_adresse haben wo festgelegt wird ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang der in sec.users steht.
 
 WICHTIG:  
+- Folgende Felder sind erforderlich:
+  - Kunde: vorname, nachname, geburtsdatum
+  - Adresse: strasse, plz, ort, bundesland
+  - User: username (email), password
 - Das Passwort eines Kunden darf nicht mit ausgegeben werden
 - Das Passwort darf beim Erstellen eines Users nicht leer sein
 - Das Passwort eines Kunden soll mit 8 Zeichen lang sein und Groß/Kleinbuchstaben sowie mind eine Zahl und ein Sonderzeichen enthalten
@@ -42,6 +46,12 @@ Folgende Resourcen werden erwartet:
   - GET Collection user eines Kunden
 - foo/kunden/{id}/adressen/{id}/details
   - GET Collection Details zu einer Adresse eines Kunden
+
+#### Bestehende Vermittler
+- Marcus Findel (login: mfindel@vp-felder.de, passwort: hommes)
+- Christian Hauser (login: chauser@vp-felder.de, passwort: hauser)
+- Christian Karasius (login: c_karasius@fondshaus.ag, passwort: supersicher)
+- Fabian Winkel
 
 #### Erwartetes JSON Format:
 
