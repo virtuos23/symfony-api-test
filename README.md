@@ -4,6 +4,14 @@
 - Docker-Desktop muss installiert sein => https://www.docker.com/get-started
 - composer sollte installiert sein => https://getcomposer.org/download/
 
+#### WINDOWS 10
+- Bitte [WSL2 installieren](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+- [Debian](https://www.microsoft.com/de-de/p/debian/9msvkqc78pk6?rtc=1&activetab=pivot:overviewtab) aus dem MSStore laden und installieren
+- mit PS (Powershell) oder WinT ([Windows Terminal](https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)) ins Debian Image wechseln (einfach 'Debian' eingeben)
+- Den Code im WSL Image von Debian clonen
+
+Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL Kontext
+
 #### Vorbereitung
 - dieses Repo auschecken
 - in das Repo wechseln
@@ -13,6 +21,12 @@
 composer install
 docker-compose up --build
 ```
+#### PGAdmin
+Bei PGAdmin muss das Verzeichnis wie folgt geändert werden:
+```shell script
+sudo chown -R 5050:5050 .pgadmin
+```
+
 Symfony sollte nun via http://localhost:8080 erreichbar sein
 
 #### Aufgabenstellung
