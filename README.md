@@ -14,7 +14,8 @@
 Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kontext
 
 ## Vorbereitung
-- dieses Repo auschecken
+- dieses Repo forken
+- geforktes Repo auschecken
 - in das Repo wechseln
 - folgendes ausführen
 
@@ -22,6 +23,7 @@ Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kon
 composer install
 docker-compose up --build
 ```
+
 ### PGAdmin
 Bei PGAdmin muss das Verzeichnis wie folgt geändert werden:
 ```shell script
@@ -31,6 +33,9 @@ sudo chown -R 5050:5050 .pgadmin
 Die Datenbank wird mit docker-compose automatisch erstellt und mit Testdaten befüllt. Diese Struktur kann und soll nicht angepasst werden. Es handelt sich hierbei um die einzige "legacy" Stelle des Banckends.
 
 Symfony sollte nun via http://localhost:8080 erreichbar sein
+
+### Commits
+Bitte mache in regelmäßigen Abständen Commits deiner Arbeit, damit wir den Fortschritt nach verfolgen können, wenn du den PR aufmachst.
 
 ## Aufgabenstellung
 Es soll eine Backend-Api erstellt werden, mit der die Kundendaten eines Fondsvermittlers ausgelesen, aktualisiert sowie neu erstellt und gelöscht werden können. Die Ausgabe soll im JSON(+ld) Format erfolgen.
