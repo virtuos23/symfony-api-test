@@ -26,11 +26,13 @@ Bei PGAdmin muss das Verzeichnis wie folgt geändert werden:
 ```shell script
 sudo chown -R 5050:5050 .pgadmin
 ```
+#### Datenbank
+Die Datenbank wird mit docker-compose automatisch erstellt und mit Testdaten befüllt. Diese Struktur kann und soll nicht angepasst werden. Es handelt sich hierbei um die einzige "legacy" Stelle des Banckends.
 
 Symfony sollte nun via http://localhost:8080 erreichbar sein
 
 #### Aufgabenstellung
-Es soll eine Backend-Api erstellt werden mit der die Kundendaten eines Vermittler ausgelesen, aktualisiert sowie neu erstellt und gelöscht werden können. Die Ausgabe soll im JSON(+ld) Format erfolgen.
+Es soll eine Backend-Api erstellt werden mit der die Kundendaten eines Fondsvermittlers ausgelesen, aktualisiert sowie neu erstellt und gelöscht werden können. Die Ausgabe soll im JSON(+ld) Format erfolgen.
 
 Die API soll **vorrangig** mit Hilfe von [API-Platform](https://api-platform.com/docs/core/) erstellt und mit [OpenApi](https://www.openapis.org/) dokumentiert werden.    
 
@@ -38,7 +40,7 @@ Alle Bundles müssen selbst konfiguriert und eingestellt werden.
 Bsp. services.yaml, security.yaml, lexik_jwt_authentication.yaml
 
 Jeder Vermittler aus der Tabelle std.vermittler darf n Kunden haben. Ausgegeben werden sollen nur Kunden die dem Vermittler anhand der ID zugeordnet und nicht geloescht sind. Die Vermittlerdaten selbst sollen nicht mit ausgegeben werden.  
-Jeder Kunde kann n Adressen haben die wiederum eine 1:1 Beziehung zu std.kunde_adresse haben wo festgelegt wird ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang der in sec.users steht.
+Jeder Kunde kann n Adressen haben die wiederum eine 1:1 Beziehung zu std.kunde_adresse haben, wo festgelegt wird, ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang der in sec.users steht.
 
 _**Zusatzaufgabe**_:  
 _Zur Sicherheit soll die API mit einem JWT abgesichert werden. Dafür soll ein JWT nach einem Login via POST erzeugt werden. Nur Vermittler mit einem aktiven Zugang (sec.vermittler_user) dürfen sich einloggen und einen JWT erhalten._  
