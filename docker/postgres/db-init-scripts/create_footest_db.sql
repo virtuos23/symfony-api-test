@@ -49,7 +49,9 @@ INSERT INTO public.bundesland VALUES
     ('TH', 'Thüringen')
 ;
 
-CREATE SCHEMA std AUTHORIZATION web;
+CREATE SCHEMA std;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA std TO web;
 
 CREATE TABLE std.vermittler (
     id SERIAL NOT NULL PRIMARY KEY,
@@ -130,6 +132,8 @@ INSERT INTO std.kunde_adresse (kunde_id, adresse_id, geschaeftlich, rechnungsadr
 ;
 
 CREATE SCHEMA sec AUTHORIZATION web;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA sec TO web;
 
 CREATE TABLE sec.vermittler_user (
     id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
