@@ -1,5 +1,5 @@
 # Test Symfony Backend
-** verfügbare Zeit 2-3h **
+**verfügbare Zeit: 2 - 3 h**
 
 ## Voraussetzungen
 - Docker-Desktop muss installiert sein => https://www.docker.com/get-started
