@@ -1,16 +1,17 @@
 ## Test Symfony Backend
 ### verfügbare Zeit 2-3h
+
 #### Voraussetzungen
 - Docker-Desktop muss installiert sein => https://www.docker.com/get-started
-- composer sollte installiert sein => https://getcomposer.org/download/
+- Composer sollte installiert sein => https://getcomposer.org/download/
 
 #### WINDOWS 10
 - Bitte [WSL2 installieren](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-- [Debian](https://www.microsoft.com/de-de/p/debian/9msvkqc78pk6?rtc=1&activetab=pivot:overviewtab) aus dem MSStore laden und installieren
-- mit PS (Powershell) oder WinT ([Windows Terminal](https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)) ins Debian Image wechseln (einfach 'Debian' eingeben)
-- Den Code im WSL Image von Debian clonen
+- [Debian](https://www.microsoft.com/de-de/p/debian/9msvkqc78pk6?rtc=1&activetab=pivot:overviewtab) aus dem MS-Store laden und installieren
+- mit PS (Powershell) oder WinT ([Windows Terminal](https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)) ins Debian-Image wechseln (einfach 'Debian' eingeben)
+- Den Code im WSL-Image von Debian clonen
 
-Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL Kontext
+Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kontext
 
 #### Vorbereitung
 - dieses Repo auschecken
@@ -30,32 +31,32 @@ sudo chown -R 5050:5050 .pgadmin
 Symfony sollte nun via http://localhost:8080 erreichbar sein
 
 #### Aufgabenstellung
-Es soll eine Backend-Api erstellt werden mit der die Kundendaten eines Vermittler ausgelesen, aktualisiert sowie neu erstellt und gelöscht werden können. Die Ausgabe soll im JSON(+ld) Format erfolgen.
+Es soll eine Backend-API erstellt werden, mit der die Kundendaten eines Vermittlers ausgelesen, aktualisiert sowie neu erstellt und gelöscht werden können. Die Ausgabe soll im JSON(+ld) Format erfolgen.
 
 Die API soll **vorrangig** mit Hilfe von [API-Platform](https://api-platform.com/docs/core/) erstellt und mit [OpenApi](https://www.openapis.org/) dokumentiert werden.    
 
 Alle Bundles müssen selbst konfiguriert und eingestellt werden.
 Bsp. services.yaml, security.yaml, lexik_jwt_authentication.yaml
 
-Jeder Vermittler aus der Tabelle std.vermittler darf n Kunden haben. Ausgegeben werden sollen nur Kunden die dem Vermittler anhand der ID zugeordnet und nicht geloescht sind. Die Vermittlerdaten selbst sollen nicht mit ausgegeben werden.  
-Jeder Kunde kann n Adressen haben die wiederum eine 1:1 Beziehung zu std.kunde_adresse haben wo festgelegt wird ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang der in sec.users steht.
+Jeder Vermittler aus der Tabelle std.vermittler darf n Kunden haben. Ausgegeben werden sollen nur Kunden, die dem Vermittler anhand der ID zugeordnet und nicht gelöscht sind. Die Vermittlerdaten selbst sollen nicht mit ausgegeben werden.  
+Jeder Kunde kann n Adressen haben, die wiederum eine 1:1-Beziehung zu std.kunde_adresse haben, wo festgelegt wird, ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang, der in sec.users steht.
 
 _**Zusatzaufgabe**_:  
 _Zur Sicherheit soll die API mit einem JWT abgesichert werden. Dafür soll ein JWT nach einem Login via POST erzeugt werden. Nur Vermittler mit einem aktiven Zugang (sec.vermittler_user) dürfen sich einloggen und einen JWT erhalten._  
 _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 
-WICHTIG:  
+Daten-Anforderungen:  
 - Folgende Felder sind erforderlich:
   - Kunde: vorname, nachname, geburtsdatum
   - Adresse: strasse, plz, ort, bundesland
   - User: username (email), password
 - Das Passwort eines Kunden darf nicht mit ausgegeben werden
 - Das Passwort darf beim Erstellen eines Users nicht leer sein
-- Das Passwort eines Kunden soll mit 8 Zeichen lang sein und Groß/Kleinbuchstaben sowie mind eine Zahl und ein Sonderzeichen enthalten
-- Die Email Adresse des Kunden muss valide sein.
-- Wird ein Datensatz aus einer Tabelle auf gelöscht gesetzt, darf dieser bei einer Abfrage nicht mit erscheinen
+- Das Passwort eines Kunden soll 8 Zeichen lang sein und Groß/Kleinbuchstaben sowie mind. eine Zahl und ein Sonderzeichen enthalten
+- Die E-Mail-Adresse des Kunden muss valide sein
+- Wird ein Datensatz aus einer Tabelle auf "gelöscht" gesetzt, darf dieser bei einer Abfrage nicht erscheinen
 
-Folgende Resourcen werden erwartet:
+Folgende Ressourcen werden erwartet:
 - foo/kunden
   - GET Collection (alle Kunden des eingeloggten Vermittlers), POST neuer Kunde für den VP
 - foo/kunden/{id}
@@ -69,7 +70,7 @@ Folgende Resourcen werden erwartet:
 - foo/user/{id}
   - GET/PUT/DELETE
 
-##### Subresourcen:
+##### Sub-Ressourcen:
 - foo/kunden/{id}/adressen
   - GET Collection Adressen eines Kunden
 - foo/kunden/{id}/user
@@ -78,9 +79,9 @@ Folgende Resourcen werden erwartet:
   - GET Collection Details zu einer Adresse eines Kunden
 
 #### Bestehende Vermittler
-- Marcus Findel (login: mfindel@vp-felder.de, passwort: hommes)
-- Christian Hauser (login: chauser@vp-felder.de, passwort: hauser)
-- Christian Karasius (login: c_karasius@fondshaus.ag, passwort: supersicher)
+- Marcus Findel (Login: mfindel@vp-felder.de, Passwort: hommes)
+- Christian Hauser (Login: chauser@vp-felder.de, Passwort: hauser)
+- Christian Karasius (Login: c_karasius@fondshaus.ag, Passwort: supersicher)
 - Fabian Winkel
 
 #### Erwartetes JSON Format:
