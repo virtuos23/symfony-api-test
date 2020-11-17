@@ -1,11 +1,11 @@
-## Test Symfony Backend
-### verfügbare Zeit 2-3h
+# Test Symfony Backend
+** verfügbare Zeit 2-3h **
 
-#### Voraussetzungen
+## Voraussetzungen
 - Docker-Desktop muss installiert sein => https://www.docker.com/get-started
 - Composer sollte installiert sein => https://getcomposer.org/download/
 
-#### WINDOWS 10
+### Windows 10
 - Bitte [WSL2 installieren](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 - [Debian](https://www.microsoft.com/de-de/p/debian/9msvkqc78pk6?rtc=1&activetab=pivot:overviewtab) aus dem MS-Store laden und installieren
 - mit PS (Powershell) oder WinT ([Windows Terminal](https://www.microsoft.com/de-de/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)) ins Debian-Image wechseln (einfach 'Debian' eingeben)
@@ -13,7 +13,7 @@
 
 Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kontext
 
-#### Vorbereitung
+## Vorbereitung
 - dieses Repo auschecken
 - in das Repo wechseln
 - folgendes ausführen
@@ -22,7 +22,7 @@ Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kon
 composer install
 docker-compose up --build
 ```
-#### PGAdmin
+### PGAdmin
 Bei PGAdmin muss das Verzeichnis wie folgt geändert werden:
 ```shell script
 sudo chown -R 5050:5050 .pgadmin
@@ -30,7 +30,7 @@ sudo chown -R 5050:5050 .pgadmin
 
 Symfony sollte nun via http://localhost:8080 erreichbar sein
 
-#### Aufgabenstellung
+## Aufgabenstellung
 Es soll eine Backend-API erstellt werden, mit der die Kundendaten eines Vermittlers ausgelesen, aktualisiert sowie neu erstellt und gelöscht werden können. Die Ausgabe soll im JSON(+ld) Format erfolgen.
 
 Die API soll **vorrangig** mit Hilfe von [API-Platform](https://api-platform.com/docs/core/) erstellt und mit [OpenApi](https://www.openapis.org/) dokumentiert werden.    
@@ -45,7 +45,7 @@ _**Zusatzaufgabe**_:
 _Zur Sicherheit soll die API mit einem JWT abgesichert werden. Dafür soll ein JWT nach einem Login via POST erzeugt werden. Nur Vermittler mit einem aktiven Zugang (sec.vermittler_user) dürfen sich einloggen und einen JWT erhalten._  
 _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 
-Daten-Anforderungen:  
+## Daten-Anforderungen:  
 - Folgende Felder sind erforderlich:
   - Kunde: vorname, nachname, geburtsdatum
   - Adresse: strasse, plz, ort, bundesland
@@ -56,7 +56,7 @@ Daten-Anforderungen:
 - Die E-Mail-Adresse des Kunden muss valide sein
 - Wird ein Datensatz aus einer Tabelle auf "gelöscht" gesetzt, darf dieser bei einer Abfrage nicht erscheinen
 
-Folgende Ressourcen werden erwartet:
+## Folgende Ressourcen werden erwartet:
 - foo/kunden
   - GET Collection (alle Kunden des eingeloggten Vermittlers), POST neuer Kunde für den VP
 - foo/kunden/{id}
@@ -70,7 +70,7 @@ Folgende Ressourcen werden erwartet:
 - foo/user/{id}
   - GET/PUT/DELETE
 
-##### Sub-Ressourcen:
+### Sub-Ressourcen:
 - foo/kunden/{id}/adressen
   - GET Collection Adressen eines Kunden
 - foo/kunden/{id}/user
@@ -78,13 +78,13 @@ Folgende Ressourcen werden erwartet:
 - foo/kunden/{id}/adressen/{id}/details
   - GET Collection Details zu einer Adresse eines Kunden
 
-#### Bestehende Vermittler
+## Bestehende Vermittler
 - Marcus Findel (Login: mfindel@vp-felder.de, Passwort: hommes)
 - Christian Hauser (Login: chauser@vp-felder.de, Passwort: hauser)
 - Christian Karasius (Login: c_karasius@fondshaus.ag, Passwort: supersicher)
 - Fabian Winkel
 
-#### Erwartetes JSON Format:
+## Erwartetes JSON Format:
 
 ````json
 {
