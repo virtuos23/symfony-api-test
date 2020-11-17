@@ -49,7 +49,7 @@ INSERT INTO public.bundesland VALUES
     ('TH', 'Thüringen')
 ;
 
-CREATE SCHEMA std;
+CREATE SCHEMA std AUTHORIZATION joe;
 
 CREATE TABLE std.vermittler (
     id SERIAL NOT NULL PRIMARY KEY,
@@ -129,7 +129,7 @@ INSERT INTO std.kunde_adresse (kunde_id, adresse_id, geschaeftlich, rechnungsadr
 ('C8EFDAAD', 6, false, true, false)
 ;
 
-CREATE SCHEMA sec;
+CREATE SCHEMA sec AUTHORIZATION joe;
 
 CREATE TABLE sec.vermittler_user (
     id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
