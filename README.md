@@ -79,11 +79,11 @@ Folgende Resourcen werden erwartet:
 - foo/kunden/{id}/adressen/{id}/details
   - GET Collection Details zu einer Adresse eines Kunden
 
-#### Bestehende Vermittler
+#### Bestehende Vermittler (inaktive und aktive)
 - Marcus Findel (login: mfindel@vp-felder.de, passwort: hommes)
 - Christian Hauser (login: chauser@vp-felder.de, passwort: hauser)
 - Christian Karasius (login: c_karasius@fondshaus.ag, passwort: supersicher)
-- Fabian Winkel
+- Fabian Winkel (keine Logindaten)
 
 #### Erwartetes JSON Format:
 
