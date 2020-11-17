@@ -1,5 +1,5 @@
 # Test Symfony Backend
-**verfügbare Zeit: 2 - 3 h**
+**_verfügbare Zeit: 2 - 3 h_**
 
 ## Voraussetzungen
 - Docker-Desktop muss installiert sein => https://www.docker.com/get-started
@@ -41,11 +41,11 @@ Bsp. services.yaml, security.yaml, lexik_jwt_authentication.yaml
 Jeder Vermittler aus der Tabelle std.vermittler darf n Kunden haben. Ausgegeben werden sollen nur Kunden, die dem Vermittler anhand der ID zugeordnet und nicht gelöscht sind. Die Vermittlerdaten selbst sollen nicht mit ausgegeben werden.  
 Jeder Kunde kann n Adressen haben, die wiederum eine 1:1-Beziehung zu std.kunde_adresse haben, wo festgelegt wird, ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang, der in sec.users steht.
 
-_**Zusatzaufgabe**_:  
+### _Zusatzaufgabe_
 _Zur Sicherheit soll die API mit einem JWT abgesichert werden. Dafür soll ein JWT nach einem Login via POST erzeugt werden. Nur Vermittler mit einem aktiven Zugang (sec.vermittler_user) dürfen sich einloggen und einen JWT erhalten._  
 _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 
-## Daten-Anforderungen:  
+## Daten-Anforderungen  
 - Folgende Felder sind erforderlich:
   - Kunde: vorname, nachname, geburtsdatum
   - Adresse: strasse, plz, ort, bundesland
@@ -56,7 +56,7 @@ _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 - Die E-Mail-Adresse des Kunden muss valide sein
 - Wird ein Datensatz aus einer Tabelle auf "gelöscht" gesetzt, darf dieser bei einer Abfrage nicht erscheinen
 
-## Folgende Ressourcen werden erwartet:
+## Folgende Ressourcen werden erwartet
 - foo/kunden
   - GET Collection (alle Kunden des eingeloggten Vermittlers), POST neuer Kunde für den VP
 - foo/kunden/{id}
@@ -70,7 +70,7 @@ _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 - foo/user/{id}
   - GET/PUT/DELETE
 
-### Sub-Ressourcen:
+### Sub-Ressourcen
 - foo/kunden/{id}/adressen
   - GET Collection Adressen eines Kunden
 - foo/kunden/{id}/user
@@ -84,7 +84,7 @@ _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 - Christian Karasius (Login: c_karasius@fondshaus.ag, Passwort: supersicher)
 - Fabian Winkel
 
-## Erwartetes JSON Format:
+## Erwartetes JSON Format
 
 ```json
 {
