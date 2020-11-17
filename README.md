@@ -43,6 +43,13 @@ Bsp. services.yaml, security.yaml, lexik_jwt_authentication.yaml
 Jeder Vermittler aus der Tabelle std.vermittler darf n Kunden haben. Ausgegeben werden sollen nur Kunden, die dem Vermittler anhand der ID zugeordnet und nicht gelöscht sind. Die Vermittlerdaten selbst sollen nicht mit ausgegeben werden.  
 Jeder Kunde kann n Adressen haben, die wiederum eine 1:1 Beziehung zu std.kunde_adresse haben, wo festgelegt wird, ob die Adresse geschäftlich genutzt wird und als Rechnungsadresse genutzt werden darf. Zusätzlich besitzt jeder Kunde einen Onlinezugang der in sec.users steht.
 
+### Hilfreiche Links
+- Login https://symfony.com/doc/current/security/form_login_setup.html
+- JWT https://jwt.io/
+- Postgresql https://www.postgresql.org/docs/12/index.html
+- api-platform Operations https://api-platform.com/docs/core/operations/
+- symfony Routes https://symfony.com/doc/current/routing.html#creating-routes-as-annotations
+
 ### _Zusatzaufgabe_
 _Zur Sicherheit soll die API mit einem JWT abgesichert werden. Dafür soll ein JWT nach einem Login via POST erzeugt werden. Nur Vermittler mit einem aktiven Zugang (sec.vermittler_user) dürfen sich einloggen und einen JWT erhalten._  
 _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
