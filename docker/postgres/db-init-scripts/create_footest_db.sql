@@ -134,8 +134,8 @@ INSERT INTO std.kunde_adresse (kunde_id, adresse_id, geschaeftlich, rechnungsadr
 
 CREATE SCHEMA sec;
 
-GRANT USAGE ON SCHEMA std TO sec;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA std TO sec;
+GRANT USAGE ON SCHEMA sec TO web;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA sec TO web;
 
 CREATE TABLE sec.vermittler_user (
     id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
