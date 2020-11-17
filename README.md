@@ -86,7 +86,7 @@ _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
 
 ## Erwartetes JSON Format:
 
-````json
+```json
 {
     "id": "CF451PQ9",
     "name": "Mustermann",
@@ -114,4 +114,4 @@ _Für den JWT kommt das Bundle lexik/jwt-authentication zur Anwendung._
         "lastLogin": "2020-05-01T20:20:20+02:00"
     }
 }
-````
+```
