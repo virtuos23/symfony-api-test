@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=7.2.5|<8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/core": "^2.5",
@@ -36,7 +36,10 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/flex": false
+        }
     },
     "autoload": {
         "psr-4": {

@@ -27,7 +27,7 @@ RUN apt-get update \
 RUN cpanm TAP::Parser::SourceHandler::pgTAP
 
 # install pgtap
-RUN git clone git://github.com/theory/pgtap.git \
+RUN git clone https://github.com/theory/pgtap.git \
     && cd pgtap \
     && make \
     && make install \
@@ -36,7 +36,7 @@ RUN git clone git://github.com/theory/pgtap.git \
 # install tds_fdw
 RUN git clone https://github.com/tds-fdw/tds_fdw.git \
   && cd tds_fdw \
-  && git checkout tags/v2.0.1 \
+  && git checkout tags/v2.0.2 \
   && make USE_PGXS=1 \
   && make USE_PGXS=1 install \
   && sed -i '/# TDS protocol version/a \\ttds version=7.0' /etc/freetds/freetds.conf
