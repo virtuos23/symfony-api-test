@@ -12,8 +12,8 @@ services:
       context: docker/postgres
       dockerfile: Dockerfile
       args:
-        POSTGRES_VERSION: 12.2
-    image: foo_postgres:12.2
+        POSTGRES_VERSION: 14.0
+    image: foo_postgres:14.0
     restart: on-failure
     ports:
       - "5432:5432"

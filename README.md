@@ -20,7 +20,7 @@ Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kon
 - folgendes ausführen
 
 ```shell script
-composer install
+composer install --ignore-platform-reqs --no-scripts
 docker-compose up --build
 ```
 
