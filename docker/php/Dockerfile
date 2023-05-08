@@ -1,4 +1,6 @@
-FROM php:7.4.8-fpm-buster
+ARG PHP_VERSION=8.2
+
+FROM php:${PHP_VERSION}-fpm-bullseye
 RUN apt-get update
 
 RUN mkdir /custom-setup
@@ -7,8 +9,9 @@ WORKDIR /custom-setup
 
 RUN chmod +x *.sh
 
-RUN ./install_packages.sh
-RUN ./enable_php_ext.sh
+RUN ./install_packages.sh \
+    && ./enable_php_ext.sh \
+    && ./install_composer.sh
 
 RUN rm -Rf /custom-setup
 

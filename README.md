@@ -21,18 +21,33 @@ Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kon
 
 ```shell script
 composer install --ignore-platform-reqs --no-scripts
-docker-compose up --build
+docker compose up --build
+
+## Dependencies im Container installieren
+docker compose exec php composer install
+docker compose exec php bin/console assets:install --relative
 ```
+
+Alternativ via Makefile: `make init`
 
 ### PGAdmin
 Bei PGAdmin muss das Verzeichnis wie folgt geändert werden:
 ```shell script
 sudo chown -R 5050:5050 .pgadmin
 ```
+
+PGAdmin ist via docker unter http://localhost:5050/ erreichbar.
+
+```
+User: user@domain.com
+PW: SuperSecret
+```
+
+
 ### Datenbank
 Die Datenbank wird mit docker-compose automatisch erstellt und mit Testdaten befüllt. Diese Struktur kann und soll nicht angepasst werden. Es handelt sich hierbei um die einzige "legacy" Stelle des Banckends.
 
-Symfony sollte nun via http://localhost:8080 erreichbar sein
+Symfony sollte nun via <http://localhost:8080> und Api Platform unter <http://localhost:8080/api>  erreichbar sein.
 
 ### Commits
 Bitte mache in regelmäßigen Abständen Commits deiner Arbeit, damit wir den Fortschritt nach verfolgen können, wenn du den PR aufmachst.
@@ -51,9 +66,9 @@ Jeder Kunde kann n Adressen haben, die wiederum eine 1:1 Beziehung zu std.kunde_
 ### Hilfreiche Links
 - Login https://symfony.com/doc/current/security/form_login_setup.html
 - JWT https://jwt.io/
-- Postgresql https://www.postgresql.org/docs/12/index.html
-- api-platform Operations https://api-platform.com/docs/core/operations/
-- symfony Routes https://symfony.com/doc/current/routing.html#creating-routes-as-annotations
+- Postgresql https://www.postgresql.org/docs/14/index.html
+- Api Platform Operations https://api-platform.com/docs/core/operations/
+- Symfony Routing https://symfony.com/doc/current/routing.html#creating-routes-as-annotations
 
 ### _Zusatzaufgabe_
 _Zur Sicherheit soll die API mit einem JWT abgesichert werden. Dafür soll ein JWT nach einem Login via POST erzeugt werden. Nur Vermittler mit einem aktiven Zugang (sec.vermittler_user) dürfen sich einloggen und einen JWT erhalten._  
