@@ -20,7 +20,6 @@ Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kon
 - folgendes ausführen
 
 ```shell script
-composer install --ignore-platform-reqs --no-scripts
 docker compose up --build
 
 ## Dependencies im Container installieren
@@ -28,7 +27,17 @@ docker compose exec php composer install
 docker compose exec php bin/console assets:install --relative
 ```
 
-Alternativ via Makefile: `make init`
+Alternativ können die Shortcuts via Makefile genutzt werden: `make init` etc.
+
+**Troubleshooting:**
+
+Dependencies lokal installieren (erfordert Composer + PHP 8.2):
+
+```shell
+composer install --ignore-platform-reqs --no-scripts
+## assets via copy installieren
+bin/console assets:install
+```
 
 ### PGAdmin
 Bei PGAdmin muss das Verzeichnis wie folgt geändert werden:
@@ -43,9 +52,8 @@ User: user@domain.com
 PW: SuperSecret
 ```
 
-
 ### Datenbank
-Die Datenbank wird mit docker-compose automatisch erstellt und mit Testdaten befüllt. Diese Struktur kann und soll nicht angepasst werden. Es handelt sich hierbei um die einzige "legacy" Stelle des Banckends.
+Die Datenbank wird mit docker-compose automatisch erstellt und mit Testdaten befüllt. Diese Struktur kann und soll nicht angepasst werden. Es handelt sich hierbei um die einzige "legacy" Stelle des Backends.
 
 Symfony sollte nun via <http://localhost:8080> und Api Platform unter <http://localhost:8080/api>  erreichbar sein.
 
