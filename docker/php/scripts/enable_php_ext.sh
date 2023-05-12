@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 docker-php-ext-install \
     bcmath \
@@ -10,11 +11,9 @@ docker-php-ext-install \
     pgsql \
     soap \
     xml \
-    xmlrpc \
     xsl \
     zip
 docker-php-ext-enable \
-    bcmath \
     dba \
     gd \
     intl \
@@ -23,10 +22,9 @@ docker-php-ext-enable \
     pgsql \
     soap \
     xml \
-    xmlrpc \
     xsl \
     zip
 
-pecl install xdebug-2.9.1
+pecl install xdebug
 
 docker-php-ext-enable xdebug

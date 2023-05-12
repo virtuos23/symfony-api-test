@@ -31,7 +31,9 @@ services:
     build:
       context: ./docker/php
       dockerfile: Dockerfile
-    image: foo_php:7.4.8-fpm
+      args:
+        PHP_VERSION: 8.2
+    image: foo_php:8.2-fpm
     restart: always
     volumes:
       - ./:/www/api
