@@ -19,15 +19,20 @@ Wenn das erfolgt ist, gelten die folgenden Schritte auch für Windows im WSL-Kon
 - in das Repo wechseln
 - folgendes ausführen
 
-```shell script
-docker compose up --build
+Installation via make-Target:
 
-## Dependencies im Container installieren
-docker compose exec php composer install
-docker compose exec php bin/console assets:install --relative
+```shell
+make init
 ```
 
-Alternativ können die Shortcuts via Makefile genutzt werden: `make init` etc.
+## oder:
+
+```shell
+docker compose up --build
+## Dependencies im Container installieren
+docker run --rm -i --tty -v $(pwd):/app composer:lts install
+docker compose exec php bin/console assets:install --relative
+```
 
 **Troubleshooting:**
 
