@@ -1,5 +1,3 @@
-version:  '3.5'
-
 networks:
   saf_api:
     name: symfony_api_foo
@@ -45,20 +43,21 @@ services:
     networks:
       - saf_api
 
-  pgadmin:
-    container_name: saf_pgadmin
-    image: dpage/pgadmin4
-    ports:
-      - "5050:80"
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=user@domain.com
-      - PGADMIN_DEFAULT_PASSWORD=SuperSecret
-    volumes:
-      - ./.pgadmin:/var/lib/pgadmin
-    depends_on:
-      - psql.test
-    networks:
-      - saf_api
+  # pgadmin:
+  #   container_name: saf_pgadmin
+  #   image: dpage/pgadmin4
+  #   ports:
+  #     - "5050:80"
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=user@domain.com
+  #     - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+  #   volumes:
+  #     - ./.pgadmin:/var/lib/pgadmin
+  #   depends_on:
+  #     - psql.test
+  #   networks:
+  #     - saf_api
+  #   user: 5050:5050
 
   web:
     container_name: saf_nginx
