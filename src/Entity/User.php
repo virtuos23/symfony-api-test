@@ -25,6 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
         new Put(uriTemplate: '/user/{id}'),
         new Delete(uriTemplate: '/user/{id}'),
     ],
+    normalizationContext: ['groups' => ['user:read']],
 )]
 #[ApiResource(
     routePrefix: '/foo',
